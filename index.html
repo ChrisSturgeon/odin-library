@@ -5,11 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Odin's Library</title>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
 
+  <button onclick="showBooks()">Show books</button>
 
-  <script src="script.js"></script>
+  <table id="library"></table>
+
+  <hr>
+
+  <form id="bookForm" action="">
+    <label for="title">Title</label>
+    <input id='title' type="text" name="title">
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author">
+    <label for="pages">No. of pages</label>
+    <input type="number" id="pages" name="pages">
+    <label for="yes">Yes</label>
+    <input type="radio" name="read" id="yes">
+    <label for="no">No</label>
+    <input type="radio" name="read" id="no">
+  </form>
+
+  <button onclick="submit()">Add Book</button>
   
+  <script src="script.js"></script>
+
+
 </body>
 </html>
