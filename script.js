@@ -91,11 +91,7 @@ function showBooks() {
     cell.appendChild(btn)
     row.appendChild(cell);
 
-
-
-
     // Delete button
-
     var cell = document.createElement('td');
     var btn = document.createElement('button');
     btn.textContent = "Delete"
@@ -142,10 +138,8 @@ function toggleRead(index) {
   } else {
     book.read = true;
   }
-
   showBooks();
 }
-
 
 // Initialise table 
 showBooks();
