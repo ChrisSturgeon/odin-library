@@ -38,7 +38,7 @@ function tableReset() {
   const table = document.getElementById('library');
   table.innerHTML = '';
   const headerRow = document.createElement('tr');
-  const headers = ["Index", "Title", "Author", "Pages", "Read", "Delete"];
+  const headers = ["Index", "Title", "Author", "Pages", "Read", "Toggle", "Delete"];
 
   for (var i = 0; i < headers.length; i++) {
     cell = document.createElement('th');
@@ -82,17 +82,32 @@ function showBooks() {
       cell.innerText = 'No'
     }
     row.appendChild(cell);
+    // Read toggle
+    var cell = document.createElement('td');
+    var btn = document.createElement('button');
+    btn.textContent = "Toggle read";
+    btn.value = i;
+    btn.addEventListener('click', function() { toggleRead(this.value);});
+    cell.appendChild(btn)
+    row.appendChild(cell);
+
+
+
+
     // Delete button
+
+    var cell = document.createElement('td');
     var btn = document.createElement('button');
     btn.textContent = "Delete"
     btn.value = i;
     btn.addEventListener('click', function() { removeBook(this.value);} )
-    row.appendChild(btn);
+    cell.appendChild(btn)
+    row.appendChild(cell);
     table.appendChild(row);
   }
 }
 
-// test form function 
+// Add book function
 
 function submit() {
   title = document.getElementById('title').value;
@@ -110,10 +125,24 @@ function submit() {
   document.getElementById('bookForm').reset();
 }
 
-// Delete function
+// Delete book function
 
 function removeBook(index) {
   myLibrary.splice(index, 1);
+  showBooks();
+}
+
+// Toggle read
+
+function toggleRead(index) {
+  const book = myLibrary[index];
+
+  if (book.read) {
+    book.read = false;
+  } else {
+    book.read = true;
+  }
+
   showBooks();
 }
 
