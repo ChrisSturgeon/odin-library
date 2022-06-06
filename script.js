@@ -127,19 +127,16 @@ function makeCards() {
     card.appendChild(title);
 
     var author = document.createElement('div');
-    author.textContent = myLibrary[i]['author'];
+    author.textContent = ` by ${myLibrary[i]['author']}`;
     card.appendChild(author);
 
     var pages = document.createElement('div');
-    pages.textContent = myLibrary[i]['pages'];
+    pages.textContent = `${myLibrary[i]['pages']} pages`;
     card.appendChild(pages);
-
-
 
     var buttons = document.createElement('div');
     buttons.classList.add('cardButtons');
     
-
     // Read Toggle
     btn = document.createElement('button');
     btn.textContent = "Toggle Read"
@@ -161,10 +158,8 @@ function makeCards() {
         btn.value = i;
         btn.addEventListener('click', function() { removeBook(this.value);} )
         buttons.appendChild(btn);
-
     cards.appendChild(card);
     bookCount();
-    
   }
 }
 
@@ -181,7 +176,6 @@ function bookCount() {
     }
   }
   document.getElementById('readCount').innerText = `Read: ${readCounter}`;
-
 }
 
 function hideCards() {
@@ -189,8 +183,6 @@ function hideCards() {
   bookForm = document.getElementById('addBook');
   bookForm.style.display = 'flex';
 }
-
-
 
 // Initialise table 
 // showBooks();
