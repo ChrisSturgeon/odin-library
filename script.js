@@ -90,6 +90,8 @@ function openForm() {
 function closeForm() {
   var bookForm = document.getElementById('addBook');
   bookForm.style.display = 'none';
+  var addBtn = document.getElementById('addButton');
+  addBtn.innerText = "Add";
   
   var cards = document.getElementById('cards');
   cards.style.display = 'grid';
@@ -141,11 +143,9 @@ function makeCards() {
     btn = document.createElement('button');
     btn.textContent = "Toggle Read"
     if (myLibrary[i].read) {
-      btn.textContent = "Read"
-      btn.style.backgroundColor = 'green'
+      btn.innerHTML = "Read &#10003"
     } else {
       btn.textContent = "Mark as Read"
-      btn.style.backgroundColor = 'orange'
     }
 
     btn.value = i;
@@ -167,15 +167,18 @@ function makeCards() {
 
 function bookCount() {
   var total = myLibrary.length;
-  document.getElementById('totalCount').innerText = `Total: ${total}`;
+  document.getElementById('totalCount').innerText = `Total books: ${total}`;
 
   var readCounter = 0;
+  var pagesCounter = 0;
   for (var i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].read) {
       readCounter ++;
+      pagesCounter += myLibrary[i].pages;
     }
   }
-  document.getElementById('readCount').innerText = `Read: ${readCounter}`;
+  document.getElementById('readCount').innerText = `Books read: ${readCounter}`;
+  document.getElementById('pagesCount').innerText = `Pages read: ${pagesCounter}`;
 }
 
 function hideCards() {

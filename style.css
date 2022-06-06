@@ -50,43 +50,17 @@ table {
 
 /* My CSS */
 
-table {
-	width: 100%;
+button {
+	font-family: 'Quattrocento Sans', sans-serif;
+	background-color: rgba(0, 0, 0, 0.605);
+	color: white;
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 5px;
 }
 
-th {
-  font-weight: bold;
+button:hover {
+	background-color: rgba(108, 107, 107, 0.605);
 }
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid black;
-}
-
-#modal {
-	display: none;
-	padding: 20px;
-	justify-content: start;
-
-}
-
-.newBook {
-	display: grid;
-	grid-template-columns: 300px 120px;
-}
-
-#bookForm {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	align-items: center;
-	align-content: center;
-	grid-gap: 15px;
-}
-
-
-
-
 
 #container {
 	display: grid;
@@ -99,14 +73,27 @@ th, td {
 	grid-row: 1/-1;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 20px;
 	padding: 20px;
+	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
+	color: white;
+	border-right: 2px solid grey;
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 3rem;
+	font-weight: bold;
 }
 
+#sideBar button {
+	height: 50px;
+	width: 80%
+}
+
+h2 {
+	font-weight: bold;
+}
 
 #content {
 	grid-column: 2/3;
@@ -120,7 +107,6 @@ h1 {
 	align-content: start;
 	grid-gap: 30px;
 	padding: 30px;
-	
 }
 
 .card {
@@ -128,16 +114,15 @@ h1 {
 	display: grid;
 	height: 200px;
 	border-radius: 5px;
-	background-image: linear-gradient(#205CA8, #F5C468);
+	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
 	padding: 10px;
-
+	box-shadow: 1px 1px 10px rgb(125, 125, 125);
 
 }
 
 .card:hover {
-	transform: scale(1.03);
+	transform: scale(1.02);
 }
-
 
 .card div:first-of-type {
 	font-size: 1.7rem;
@@ -149,12 +134,11 @@ h1 {
 	text-align: center;
 }
 
-
 .cardButtons {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-gap: 5px;
 }
-
 
 #addBook {
 	display: none;
@@ -171,17 +155,45 @@ h1 {
 	padding: 20px;
 	display: grid;
 	align-items: center;
+	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
+	color: white;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px rgb(125, 125, 125);
+}
+
+#header button {
+	width: 50px;
+	font-size: 1.5rem;
+}
+
+#bookForm {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+	align-content: center;
+	grid-gap: 15px;
+}
+
+input {
+	border-radius: 5px;
+	border: 1px solid grey;
+	padding: 2px;
 }
 
 #formButtons {
 	grid-column: 1 / -1;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 }
+
 
 #formButtons > button {
 	height: 50px;
 	width: 120px;
+}
+
+input[type="radio"]{
+	accent-color: black;
 }
 
 #header {
