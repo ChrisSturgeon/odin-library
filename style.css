@@ -49,6 +49,10 @@ table {
 
 /* My CSS */
 
+table {
+	width: 100%
+}
+
 th {
   font-weight: bold;
 }
@@ -58,5 +62,36 @@ th, td {
   text-align: center;
   border: 1px solid black;
 }
+
+#modal {
+	display: none;
+	padding: 20px;
+	transition: display 4s;
+
+}
+
+#container {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	padding: 20px;
+}
+
+#sideBar {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+#content {
+	grid-column-start: 2;
+	padding: 20px;
+}
+
+
 
 

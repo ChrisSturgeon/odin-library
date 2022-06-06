@@ -26,12 +26,6 @@ function Book(title, author, pages, read) {
   }
 }
 
-// Function for adding books to the library array.
-
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-}
-
 // Clear table and replace initial headers;
 
 function tableReset() {
@@ -115,7 +109,7 @@ function submit() {
     read = true;
   }
   userBook = new Book(title, author, pages, read);
-  addBookToLibrary(userBook);
+  myLibrary.push(userBook);
   showBooks();
   // Reset form to clear inputs 
   document.getElementById('bookForm').reset();
@@ -140,6 +134,22 @@ function toggleRead(index) {
   }
   showBooks();
 }
+
+// Show form
+
+function openForm() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "block";
+}
+
+function closeForm() {
+  console.log("test");
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+
+}
+
+
 
 // Initialise table 
 showBooks();
