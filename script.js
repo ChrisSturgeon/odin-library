@@ -26,7 +26,6 @@ function Book(title, author, pages, read) {
   }
 }
 
-
 // Add book function
 
 function submit() {
@@ -39,11 +38,20 @@ function submit() {
     read = true;
   }
   userBook = new Book(title, author, pages, read);
-  myLibrary.push(userBook);
+  myLibrary.push(userBook); 
+
+  var addBtn = document.getElementById('addButton');
+  addBtn.innerText = "Add another!";
   // showBooks();
   makeCards();
   // Reset form to clear inputs 
   document.getElementById('bookForm').reset();
+
+}
+
+function addClose() {
+  submit();
+  closeForm();
 }
 
 // Delete book function
@@ -71,17 +79,21 @@ function toggleRead(index) {
 // Show form
 
 function openForm() {
-  const modal = document.getElementById("modal");
-  modal.style.display = "block";
+  var cards = document.getElementById('cards');
+  cards.style.display = 'none';
+
+  var bookForm = document.getElementById('addBook');
+  bookForm.style.display = 'flex';
+  
 }
 
 function closeForm() {
-  console.log("test");
-  const modal = document.getElementById("modal");
-  modal.style.display = "none";
-
+  var bookForm = document.getElementById('addBook');
+  bookForm.style.display = 'none';
+  
+  var cards = document.getElementById('cards');
+  cards.style.display = 'grid';
 }
-
 
 // Make individual card
 
@@ -99,8 +111,6 @@ function cardsReset() {
   const cards = document.getElementById('cards');
   cards.innerHTML = '';
 }
-
-  
 
 // Make cards 
 
@@ -124,21 +134,23 @@ function makeCards() {
     pages.textContent = myLibrary[i]['pages'];
     card.appendChild(pages);
 
-    var read = document.createElement('div');
 
-    if (myLibrary[i].read) {
-      read.innerText = 'Read: Yes'
-    } else {
-      read.innerText = 'Read: No'
-    }
-    card.appendChild(read);
 
     var buttons = document.createElement('div');
     buttons.classList.add('cardButtons');
+    
 
-    // Read button
+    // Read Toggle
     btn = document.createElement('button');
-    btn.textContent = "Read"
+    btn.textContent = "Toggle Read"
+    if (myLibrary[i].read) {
+      btn.textContent = "Read"
+      btn.style.backgroundColor = 'green'
+    } else {
+      btn.textContent = "Mark as Read"
+      btn.style.backgroundColor = 'orange'
+    }
+
     btn.value = i;
     btn.addEventListener('click', function() { toggleRead(this.value);});
     buttons.appendChild(btn);
@@ -172,8 +184,11 @@ function bookCount() {
 
 }
 
-
-
+function hideCards() {
+  document.getElementById('cards').innerHTML = '';
+  bookForm = document.getElementById('addBook');
+  bookForm.style.display = 'flex';
+}
 
 
 

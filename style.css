@@ -50,7 +50,7 @@ table {
 /* My CSS */
 
 table {
-	width: 100%
+	width: 100%;
 }
 
 th {
@@ -66,27 +66,31 @@ th, td {
 #modal {
 	display: none;
 	padding: 20px;
-	grid-row: 1/2;
+	justify-content: start;
+
+}
+
+.newBook {
 	display: grid;
-	grid-template-columns: 300px 200px;
+	grid-template-columns: 300px 120px;
 }
 
-form {
-	grid-row: 1/ -1;
+#bookForm {
 	display: grid;
-	grid-template-columns: 100px 200px;
-
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+	align-content: center;
+	grid-gap: 15px;
 }
 
-.formButtons {
-	display: flex;
-	
-}
+
+
+
 
 #container {
 	display: grid;
 	grid-template-columns: 200px 4fr;
-	padding: 20px;
+	height: 100vh;
 }
 
 #sideBar {
@@ -95,6 +99,7 @@ form {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	padding: 20px;
 }
 
 h1 {
@@ -105,15 +110,15 @@ h1 {
 #content {
 	grid-column: 2/3;
 	grid-row: 1/-1;
-	padding: 20px;
-	grid-gap: 10px;
-	display: grid;
 }
 
 #cards {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	align-content: start;
 	grid-gap: 15px;
+	padding: 30px;
+	
 }
 
 .card {
@@ -127,6 +132,51 @@ h1 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
+
+
+#addBook {
+	display: none;
+	background-color: rgb(0, 0, 0);
+	height: 100vh;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.formArea {
+	height: 300px; 
+	width: 300px;
+	background-color: white;
+	padding: 20px;
+	display: grid;
+	align-items: center;
+}
+
+#formButtons {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#formButtons > button {
+	height: 50px;
+	width: 120px;
+}
+
+#header {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
 
 
 
