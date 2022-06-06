@@ -26,76 +26,6 @@ function Book(title, author, pages, read) {
   }
 }
 
-// Clear table and replace initial headers;
-
-function tableReset() {
-  const table = document.getElementById('library');
-  table.innerHTML = '';
-  const headerRow = document.createElement('tr');
-  const headers = ["Index", "Title", "Author", "Pages", "Read", "Toggle", "Delete"];
-
-  for (var i = 0; i < headers.length; i++) {
-    cell = document.createElement('th');
-    cell.innerText = headers[i];
-    headerRow.appendChild(cell)
-  }
-  table.appendChild(headerRow)
-}
-
-// Function for showing all books
-
-function showBooks() {
-
-  const table = document.getElementById('library');
-
-  tableReset();
-
-  for (i = 0; i< myLibrary.length; i++) {
-    const row = document.createElement('tr');
-    // index
-    var cell = document.createElement('td');
-    cell.innerText = i;
-    row.appendChild(cell);
-    // title
-    var cell = document.createElement('td');
-    cell.innerText = myLibrary[i].title
-    row.appendChild(cell);
-    // author
-    var cell = document.createElement('td');
-    cell.innerText = myLibrary[i].author;
-    row.appendChild(cell);
-    // pages
-    var cell = document.createElement('td');
-    cell.innerText = myLibrary[i].pages;
-    row.appendChild(cell);
-    // read
-    var cell = document.createElement('td');
-    if (myLibrary[i].read) {
-      cell.innerText = 'Yes'
-    } else {
-      cell.innerText = 'No'
-    }
-    row.appendChild(cell);
-    // Read toggle
-    var cell = document.createElement('td');
-    var btn = document.createElement('button');
-    btn.textContent = "Toggle read";
-    btn.value = i;
-    btn.addEventListener('click', function() { toggleRead(this.value);});
-    cell.appendChild(btn)
-    row.appendChild(cell);
-
-    // Delete button
-    var cell = document.createElement('td');
-    var btn = document.createElement('button');
-    btn.textContent = "Delete"
-    btn.value = i;
-    btn.addEventListener('click', function() { removeBook(this.value);} )
-    cell.appendChild(btn)
-    row.appendChild(cell);
-    table.appendChild(row);
-  }
-}
 
 // Add book function
 
@@ -110,7 +40,8 @@ function submit() {
   }
   userBook = new Book(title, author, pages, read);
   myLibrary.push(userBook);
-  showBooks();
+  // showBooks();
+  makeCards();
   // Reset form to clear inputs 
   document.getElementById('bookForm').reset();
 }
@@ -119,7 +50,8 @@ function submit() {
 
 function removeBook(index) {
   myLibrary.splice(index, 1);
-  showBooks();
+  // showBooks();
+  makeCards();
 }
 
 // Toggle read
@@ -132,7 +64,8 @@ function toggleRead(index) {
   } else {
     book.read = true;
   }
-  showBooks();
+  // showBooks();
+  makeCards();
 }
 
 // Show form
@@ -150,9 +83,103 @@ function closeForm() {
 }
 
 
+// Make individual card
+
+function makeCard() {
+  const cards = document.getElementById('cards');
+
+  var card = document.createElement('div');
+  card.textContent = this.pages;
+  cards.appendChild(card);
+}
+
+// Cards Reset 
+
+function cardsReset() {
+  const cards = document.getElementById('cards');
+  cards.innerHTML = '';
+}
+
+  
+
+// Make cards 
+
+function makeCards() {
+  cardsReset();
+  const cards = document.getElementById('cards');
+
+  for (i = 0; i < myLibrary.length; i++) {
+    card = document.createElement('div');
+    card.classList.add('card')
+
+    var title = document.createElement('div');
+    title.textContent = myLibrary[i]['title'];
+    card.appendChild(title);
+
+    var author = document.createElement('div');
+    author.textContent = myLibrary[i]['author'];
+    card.appendChild(author);
+
+    var pages = document.createElement('div');
+    pages.textContent = myLibrary[i]['pages'];
+    card.appendChild(pages);
+
+    var read = document.createElement('div');
+
+    if (myLibrary[i].read) {
+      read.innerText = 'Read: Yes'
+    } else {
+      read.innerText = 'Read: No'
+    }
+    card.appendChild(read);
+
+    var buttons = document.createElement('div');
+    buttons.classList.add('cardButtons');
+
+    // Read button
+    btn = document.createElement('button');
+    btn.textContent = "Read"
+    btn.value = i;
+    btn.addEventListener('click', function() { toggleRead(this.value);});
+    buttons.appendChild(btn);
+    card.appendChild(buttons);
+        // Delete button
+        btn = document.createElement('button');
+        btn.textContent = "Delete"
+        btn.value = i;
+        btn.addEventListener('click', function() { removeBook(this.value);} )
+        buttons.appendChild(btn);
+
+    cards.appendChild(card);
+    bookCount();
+    
+  }
+}
+
+// Update sidebar information 
+
+function bookCount() {
+  var total = myLibrary.length;
+  document.getElementById('totalCount').innerText = `Total: ${total}`;
+
+  var readCounter = 0;
+  for (var i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].read) {
+      readCounter ++;
+    }
+  }
+  document.getElementById('readCount').innerText = `Read: ${readCounter}`;
+
+}
+
+
+
+
+
 
 // Initialise table 
-showBooks();
+// showBooks();
+makeCards();
 
 
 
