@@ -28,10 +28,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-	font-family: 'Quattrocento Sans', sans-serif;
-}
+
 ol, ul {
 	list-style: none;
 }
@@ -50,16 +47,44 @@ table {
 
 /* My CSS */
 
-button {
+body, button {
+	line-height: 1;
 	font-family: 'Quattrocento Sans', sans-serif;
-	background-color: rgba(0, 0, 0, 0.605);
 	color: white;
+}
+
+button {
+	background-color: rgba(0, 0, 0, 0.605);
 	border: 1px solid rgb(255, 255, 255);
 	border-radius: 5px;
 }
 
 button:hover {
 	background-color: rgba(108, 107, 107, 0.605);
+}
+
+h1 {
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+h2 {
+	font-weight: bold;
+}
+
+input {
+	border-radius: 5px;
+	border: 1px solid grey;
+	padding: 2px;
+}
+
+input[type="radio"]{
+	accent-color: black;
+}
+
+#sideBar, .card, .formArea {
+	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
+	padding: 20px;
 }
 
 #container {
@@ -75,24 +100,12 @@ button:hover {
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
-	padding: 20px;
-	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
-	color: white;
 	border-right: 2px solid grey;
-}
-
-h1 {
-	font-size: 3rem;
-	font-weight: bold;
 }
 
 #sideBar button {
 	height: 50px;
 	width: 80%
-}
-
-h2 {
-	font-weight: bold;
 }
 
 #content {
@@ -110,18 +123,14 @@ h2 {
 }
 
 .card {
-	color: white;
 	display: grid;
 	height: 200px;
 	border-radius: 5px;
-	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
-	padding: 10px;
 	box-shadow: 1px 1px 10px rgb(125, 125, 125);
-
 }
 
 .card:hover {
-	transform: scale(1.02);
+	transform: scale(1.05);
 }
 
 .card div:first-of-type {
@@ -151,13 +160,8 @@ h2 {
 .formArea {
 	height: 300px; 
 	width: 300px;
-	background-color: white;
-	padding: 20px;
 	display: grid;
 	align-items: center;
-	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
-	color: white;
-	border-radius: 5px;
 	box-shadow: 1px 1px 10px rgb(125, 125, 125);
 }
 
@@ -174,26 +178,15 @@ h2 {
 	grid-gap: 15px;
 }
 
-input {
-	border-radius: 5px;
-	border: 1px solid grey;
-	padding: 2px;
-}
-
 #formButtons {
 	grid-column: 1 / -1;
 	display: flex;
 	justify-content: center;
 }
 
-
 #formButtons > button {
 	height: 50px;
 	width: 120px;
-}
-
-input[type="radio"]{
-	accent-color: black;
 }
 
 #header {
@@ -201,16 +194,3 @@ input[type="radio"]{
 	display: flex;
 	justify-content: space-between;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

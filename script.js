@@ -1,4 +1,4 @@
-// Example instances and library
+// Example books
 
 const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 304, true);
 const norwegianWood = new Book("Norwegian Wood", "Haruki Murakami", 381, true);
@@ -6,7 +6,7 @@ const donQuixote = new Book("Don Quixote", "Miguel de Cervantes", 1077, false);
 const jurassicPark = new Book("Jurassic Park", "Michael Crichton", 448, true);
 const mobyDick = new Book("Moby Dick", "Herman Melville", 378, false);
 
-// Create array for storing books.
+// Array for storing book instances.
 
 var myLibrary = [hobbit, norwegianWood, donQuixote, jurassicPark, mobyDick];
 
@@ -31,7 +31,7 @@ function Book(title, author, pages, read) {
 function submit() {
   title = document.getElementById('title').value;
   author = document.getElementById('author').value;
-  pages = document.getElementById('pages').value;
+  pages = Number(document.getElementById('pages').value);
   read = false;
 
   if (document.getElementById('yes').checked) {
@@ -46,12 +46,20 @@ function submit() {
   makeCards();
   // Reset form to clear inputs 
   document.getElementById('bookForm').reset();
-
 }
 
-function addClose() {
-  submit();
-  closeForm();
+// Toggle read book parameter
+
+function toggleRead(index) {
+  const book = myLibrary[index];
+  
+  if (book.read) {
+    book.read = false;
+  } else {
+    book.read = true;
+  }
+  // showBooks();
+  makeCards();
 }
 
 // Delete book function
@@ -62,21 +70,7 @@ function removeBook(index) {
   makeCards();
 }
 
-// Toggle read
-
-function toggleRead(index) {
-  const book = myLibrary[index];
-
-  if (book.read) {
-    book.read = false;
-  } else {
-    book.read = true;
-  }
-  // showBooks();
-  makeCards();
-}
-
-// Show form
+// Show new book form
 
 function openForm() {
   var cards = document.getElementById('cards');
@@ -84,8 +78,9 @@ function openForm() {
 
   var bookForm = document.getElementById('addBook');
   bookForm.style.display = 'flex';
-  
 }
+
+// Close new book
 
 function closeForm() {
   var bookForm = document.getElementById('addBook');
@@ -107,18 +102,13 @@ function makeCard() {
   cards.appendChild(card);
 }
 
-// Cards Reset 
-
-function cardsReset() {
-  const cards = document.getElementById('cards');
-  cards.innerHTML = '';
-}
-
 // Make cards 
 
 function makeCards() {
   cardsReset();
   const cards = document.getElementById('cards');
+
+  // Loop through library array creating card for each book
 
   for (i = 0; i < myLibrary.length; i++) {
     card = document.createElement('div');
@@ -139,7 +129,7 @@ function makeCards() {
     var buttons = document.createElement('div');
     buttons.classList.add('cardButtons');
     
-    // Read Toggle
+    // Read toggle button
     btn = document.createElement('button');
     btn.textContent = "Toggle Read"
     if (myLibrary[i].read) {
@@ -152,15 +142,24 @@ function makeCards() {
     btn.addEventListener('click', function() { toggleRead(this.value);});
     buttons.appendChild(btn);
     card.appendChild(buttons);
-        // Delete button
-        btn = document.createElement('button');
-        btn.textContent = "Delete"
-        btn.value = i;
-        btn.addEventListener('click', function() { removeBook(this.value);} )
-        buttons.appendChild(btn);
+
+    // Delete book button
+    btn = document.createElement('button');
+    btn.textContent = "Delete"
+    btn.value = i;
+    btn.addEventListener('click', function() { removeBook(this.value);} )
+    buttons.appendChild(btn);
+
     cards.appendChild(card);
     bookCount();
   }
+}
+
+// Cards Reset 
+
+function cardsReset() {
+  const cards = document.getElementById('cards');
+  cards.innerHTML = '';
 }
 
 // Update sidebar information 
@@ -181,14 +180,8 @@ function bookCount() {
   document.getElementById('pagesCount').innerText = `Pages read: ${pagesCounter}`;
 }
 
-function hideCards() {
-  document.getElementById('cards').innerHTML = '';
-  bookForm = document.getElementById('addBook');
-  bookForm.style.display = 'flex';
-}
+// Make initial cards
 
-// Initialise table 
-// showBooks();
 makeCards();
 
 
