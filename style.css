@@ -83,7 +83,7 @@ input[type="radio"]{
 }
 
 #sideBar, .card, .formArea {
-	background-image: linear-gradient(rgb(113, 0, 148), rgb(236, 0, 193));
+	background-image: linear-gradient(rgb(35, 0, 209), rgb(236, 0, 193));
 	padding: 20px;
 }
 
