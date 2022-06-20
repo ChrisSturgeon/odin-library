@@ -1,3 +1,20 @@
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  info = function() {
+    if (read) {
+      return `${this.title} by ${this.author}, ${this.pages} pages, read.`
+    } else {
+      return `${this.title} by ${this.author}, ${this.pages} pages, not yet read.`
+    }
+  }
+}
+
 // Example books
 
 const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 304, true);
@@ -10,21 +27,6 @@ const mobyDick = new Book("Moby Dick", "Herman Melville", 378, false);
 
 var myLibrary = [hobbit, norwegianWood, donQuixote, jurassicPark, mobyDick];
 
-// Book constructor
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function() {
-    if (read) {
-      return `${this.title} by ${this.author}, ${this.pages} pages, read.`
-    } else {
-      return `${this.title} by ${this.author}, ${this.pages} pages, not yet read.`
-    }
-  }
-}
 
 // Add book function
 
