@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
-  
+  <script defer src="script.js"></script>
 </head>
 <body>
   
@@ -33,24 +33,25 @@
           </div>
           <form action="" id="bookForm">
             <label for="title">Title</label>
-            <input id='title' type="text" name="title" required>
+            <input id='title' type="text" name="title" required minlength="4">
             <label for="author">Author</label>
-            <input type="text" id="author" name="author" required>
+            <input type="text" id="author" name="author">
             <label for="pages">No. of pages</label>
             <input type="number" id="pages" name="pages">
             <label for="yes">Read</label>
             <input type="radio" name="read" id="yes">
             <label for="no">Not Read</label>
             <input type="radio" name="read" id="no">
+            <button id="addButton">Add</button>
           </form>
           <div id="formButtons">
-            <button id="addButton" onclick="submit()">Add</button>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  
 
 </body>
 </html>

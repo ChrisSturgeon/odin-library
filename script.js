@@ -27,7 +27,6 @@ const mobyDick = new Book("Moby Dick", "Herman Melville", 378, false);
 
 var myLibrary = [hobbit, norwegianWood, donQuixote, jurassicPark, mobyDick];
 
-
 // Add book function
 
 function submit() {
@@ -184,7 +183,39 @@ function bookCount() {
 
 // Make initial cards
 
+
+const titleInput = document.getElementById('title');
+
+titleInput.addEventListener('input', (event) => {
+  if (titleInput.validity.tooShort) {
+    titleInput.setCustomValidity('TOo short')
+  }
+
+  titleInput.setCustomValidity('Hiya')
+});
+
+// titleInput.addEventListener('invalid', () => {
+//   if (titleInput.value === '') {
+//     titleInput.setCustomValidity('Please enter an title!');
+//   }
+// })
+
+const addButton = document.getElementById('addButton');
+
+addButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  submit();
+  
+  const bookForm = document.getElementById('bookForm');
+
+  bookForm.submit();
+
+});
+
+
 makeCards();
+
+
 
 
 
